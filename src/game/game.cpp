@@ -10,8 +10,7 @@ void Game ::initialize()
 
     SDL_DisplayMode displayMode;
     SDL_GetCurrentDisplayMode(0 , &displayMode);
-
-    window = SDL_CreateWindow(SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (*displayMode).w, (*displayMode).h, SDL_WINDOW_FULLSCREEN); // MIGHT GIVE AN ERROR
+    window = SDL_CreateWindow(SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (displayMode).w, (displayMode).h, SDL_WINDOW_FULLSCREEN); // MIGHT GIVE AN ERROR
     SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
     renderer = SDL_CreateRenderer(window, NULL, 0);
 }

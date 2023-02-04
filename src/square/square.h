@@ -2,11 +2,14 @@
 #include <SDL2/SDL.h>
 #include <vector> 
 #include <map>
-#include <tuple> 
+#include <glm/glm.hpp>
 class Square {
-    std::tuple <double , double , double > square_rotation_xyz ;  
-    std::tuple <double , double , double > square_position_xyz ; 
+    glm::vec4 pointPosition() ; 
     double square_width ; 
     void renderMyself ( SDL_Renderer * renderer ) ;  
 }; 
 
+int main () {
+    
+    return 0 ; 
+} 
