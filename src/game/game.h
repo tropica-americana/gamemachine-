@@ -16,5 +16,4 @@ class Game {
     void update () ;  // updates the postion and presence of objects based on the input 
     void render () ;  // just paste everything on thhe renderrer 
     void destroy () ; // destroys the window and the renderer 
-    
 } ; 
