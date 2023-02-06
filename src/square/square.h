@@ -2,14 +2,18 @@
 // #include <SDL2/SDL.h>
 #include <vector> 
 #include <map>
-#include <glm/glm.hpp>
+#include "glm/glm.hpp"
 #include <SDL2/SDL.h>
+#include <array>
 class Square {
-    glm::vec4 squarePosition() ; 
-    glm::vec4 squareOrientation () ; 
-    
+    double squareWidth ; 
+    glm::vec3 squarePosition(0.0f) ; 
+    glm::vec3 squareOrientation (0.0f) ; // contains the value of square rotation in radians  
+    std::vector <glm::vec3> squareverticesarray  ;   
+    Square (double squareWidth ) ; 
+    ~Square ()  ; 
     double square_width ; 
-    void renderMyself ( SDL_Renderer * renderer ) ;  
+    void renderMyself ( SDLsRenderer * renderer ) ;  
 }; 
 
 
