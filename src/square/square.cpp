@@ -2,19 +2,21 @@
 
 void Square :: renderMyself (SDL_Renderer * renderer )
 {
-    numvertices  = squareverticesarray.size () ; 
+    int numvertices  = squareverticesarray.size () ; 
     for (int i = 0 ; i <= numvertices  ; i++ ){
-    
+        SDL_RenderDrawLine(renderer , squareverticesarray[i].x , squareverticesarray[i].y , 
+        squareverticesarray[i-1].x , squareverticesarray[i-1].y );
      }
 }
-Square::Square(double squareWidth ){ 
+Square::Square(float  squareWidth ){ 
     glm::mat4 model (1.0f) ; 
-    model = glm::scale (model , square_width) ; 
+    model = glm::scale (model , glm::vec3 (4.0f)); 
+    glm::mat4 rotatedMatrix  = model;  
     for (int i = 0 ; i <= 4 ; i++ ) {
-        glm::vec3 vertex = glm::rotate (model , 90.0f/* angle in the radians */  , 
-        glm::vec3 (0.0f , 0.0f  , 1.0f )/*we are rotating it along the z axis */ ) ; 
-        squareverticesarray.pushback (vertex ) ; 
+        rotatedMatrix = glm::rotate (rotatedMatrix , 90.0f/* angle in the radians */  , 
+        glm::vec3 (0.0f , 0.0f  , 1.0f )/*we are rotating it along the z axis */ ) ;
+        glm::vec4 vertex = rotatedMatrix * glm::vec4(1.0f ) ;  
+        squareverticesarray.push_back (vertex ) ; 
     }
 
 } 
- 

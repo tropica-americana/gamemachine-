@@ -51,11 +51,13 @@ void Game ::processInput()
 }
 
 void Game :: update () {
+    SDL_RenderClear (renderer ) ; 
+
 } 
 
 void Game :: render () {
     SDL_SetRenderDrawColor(renderer ,255 ,21 ,21 , 255 ) ; 
-    SDL_RenderClear (renderer ) ; 
+    
     SDL_RenderPresent(renderer ) ; 
 } 
 
