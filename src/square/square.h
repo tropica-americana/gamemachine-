@@ -15,7 +15,8 @@ class Square {
     std::vector <glm::vec4> squareverticesarray  ;   
     Square (float squareWidth ) ; 
     ~Square () = default   ; 
-    void renderMyself ( SDL_Renderer * renderer ) ;  
+    void renderMyself ( SDL_Renderer * renderer ) ;
+    void handleMouseEvents(SDL_MouseMotionEvent &mouseEvent  ) ;   
 }; 
 
 

@@ -22,9 +22,9 @@ void MyRenderFunction (){
 int main () {
 
     Game game ; 
-    Square square(10.0) ; 
+    Square square(100.0) ; 
 
-    cout<<game.isRunning<<endl; 
+    
     while (game.isRunning){
         game.processInput() ; 
         game.update()  ; 
@@ -35,10 +35,11 @@ int main () {
                 SDL_RenderClear(game.renderer ) ; 
                 SDL_SetRenderDrawColor(game.renderer  , 255,255,255,255);
                 square.renderMyself(game.renderer ) ; 
+                square.handleMouseEvents(game.mouseevent);
                 SDL_RenderPresent(game.renderer ) ; 
             }
         );
-        SDL_Delay (100) ; 
+        SDL_Delay (10) ; 
     }
     return 0 ; 
      }

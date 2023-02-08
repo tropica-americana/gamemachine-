@@ -43,6 +43,7 @@ void Game ::processInput()
 
             case SDL_MOUSEMOTION :{
                 mouseevent = event.motion  ; 
+              
             }     
 
             }
