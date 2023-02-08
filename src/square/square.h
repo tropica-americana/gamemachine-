@@ -1,5 +1,4 @@
 #include <iostream>
-// #include <SDL2/SDL.h>
 #include <vector> 
 #include <map>
 #include "glm/glm.hpp"
