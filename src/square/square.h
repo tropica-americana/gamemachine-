@@ -7,7 +7,7 @@
 #include <array>
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtx/string_cast.hpp>
-
+#include <string>
 class Square {
     public:
     float  squareWidth ; 
@@ -16,7 +16,6 @@ class Square {
     std::vector <glm::vec4> squareverticesarray  ;   
     Square (float squareWidth ) ; 
     ~Square () = default   ; 
-     
     void renderMyself ( SDL_Renderer * renderer ) ;  
 }; 
 

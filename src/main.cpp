@@ -10,12 +10,7 @@
 #include <SDL2/SDL.h>
 using namespace std ; 
 
-// void display_model (glm::mat4 model )  {
-//     std::cout<<glm::to_string (model[0]) <<std::endl;     
-//     std::cout<<glm::to_string (model[1]) <<std::endl;       
-//     std::cout<<glm::to_string (model[2]) <<std::endl;    
-//     std::cout<<glm::to_string (model[3]) <<std::endl; 
-// } 
+
 template <typename T>
 void MyRenderFunction (T function ){
     function () ;
@@ -27,8 +22,8 @@ void MyRenderFunction (){
 int main () {
 
     Game game ; 
-    Square square(100.0) ; 
-    square.squarePosition
+    Square square(10.0) ; 
+
     cout<<game.isRunning<<endl; 
     while (game.isRunning){
         game.processInput() ; 
@@ -43,6 +38,7 @@ int main () {
                 SDL_RenderPresent(game.renderer ) ; 
             }
         );
+        SDL_Delay (100) ; 
     }
     return 0 ; 
      }
