@@ -21,36 +21,33 @@ static void display_model (const glm::mat4 &model)  {
 void Square :: renderMyself (SDL_Renderer * renderer )
 {
     int numvertices  = squareverticesarray.size () ; 
-    auto iterator = squareverticesarray.begin () ;
-    std::cout<<numvertices<<std::endl;
-    for (int i = 0 ; i < numvertices  ; i++ ){
-        if (i != 0 && iterator != squareverticesarray.end ()  ){
-        iterator++ ; 
+    auto iterator_end = squareverticesarray.end() - 1  ;
+    auto start = squareverticesarray.begin () ; 
+    for (int i = 0 ; i <= numvertices  ; i++ ){
+        if (i != 0 && i < numvertices  ){
+        
         SDL_RenderDrawLine(renderer , squareverticesarray[i].x , squareverticesarray[i].y , 
         squareverticesarray[i-1].x , squareverticesarray[i-1].y );} ; 
-        if (iterator == squareverticesarray.end ()) {
-            auto start = squareverticesarray.begin () ; 
-            SDL_RenderDrawLine(renderer , iterator->x , iterator->y , start->x , start->y  );
+        if (i == numvertices ) {
+            SDL_RenderDrawLine(renderer , (iterator_end)->x , (iterator_end)->y , start->x , start->y  );
         };
      }    
 }
 
 Square::Square(float  squareWidth ): squareWidth{squareWidth} { 
-    squarePosition.x = 300.0f ; 
+    squarePosition.x = 100.0f ; 
     squarePosition.y = 300.0f ;
     squarePosition.z = 10.0f ; 
     glm::mat4 model (1.0f) ; 
     model = glm::scale (model , glm::vec3 (squareWidth , squareWidth , squareWidth)); 
-    // tranlate the model matrix to a specific position 
-    // model = glm::translate (model , squarePosition );
+    //  use float90.0f 
+
     for (int i = 0 ; i < 4 ; i++)
     {  
 
-        model = glm::rotate (model , 90.0f/* angle in the radians */  , 
+        model = glm::rotate (model ,( 1.5707f)/* angle in the radians */  , 
         glm::vec3 (0.0f , 0.0f  , 1.0f )/*we are rotating it along the z axis */ ) ;
-        display_model(model , "before translation "); 
         glm::vec4 vertex =  (model * glm::vec4(1.0f))+ glm::vec4(squarePosition , 1.0f) ; 
-        std::cout<< glm::to_string(vertex) <<std::endl; 
         squareverticesarray.push_back (vertex ) ; 
 
     }                                                  
