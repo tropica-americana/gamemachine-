@@ -7,33 +7,42 @@
 #include <glm/glm.hpp>
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtx/string_cast.hpp>
-using namesspace std ; 
+#include <SDL2/SDL.h>
+using namespace std ; 
 
-void display_model (glm::mat4 model )  {
-    std::cout<<glm::to_string (model[0]) <<std::endl;     
-    std::cout<<glm::to_string (model[1]) <<std::endl;       
-    std::cout<<glm::to_string (model[2]) <<std::endl;    
-    std::cout<<glm::to_string (model[3]) <<std::endl; 
-} 
+// void display_model (glm::mat4 model )  {
+//     std::cout<<glm::to_string (model[0]) <<std::endl;     
+//     std::cout<<glm::to_string (model[1]) <<std::endl;       
+//     std::cout<<glm::to_string (model[2]) <<std::endl;    
+//     std::cout<<glm::to_string (model[3]) <<std::endl; 
+// } 
+template <typename T>
+void MyRenderFunction (T function ){
+    function () ;
+};
 
+void MyRenderFunction (){
+
+};
 int main () {
 
     Game game ; 
-    Square square ; 
+    Square square(100.0) ; 
+    square.squarePosition
     cout<<game.isRunning<<endl; 
-    while (game.isRunning) {
+    while (game.isRunning){
         game.processInput() ; 
         game.update()  ; 
-        square.renderMyself (game.renderer);
-        game.render () ; 
+        MyRenderFunction(
+            [&game , &square ] (){
+                SDL_SetRenderDrawColor(game.renderer , 21,
+                21,21,255 ) ; 
+                SDL_RenderClear(game.renderer ) ; 
+                SDL_SetRenderDrawColor(game.renderer  , 255,255,255,255);
+                square.renderMyself(game.renderer ) ; 
+                SDL_RenderPresent(game.renderer ) ; 
+            }
+        );
     }
-
-    // glm::vec4 vertex (1.0f , 5.0f , 1.0f , 1.0f ) ; 
-    // glm::mat4 model (1.0f ) ;  
-    // model = glm::scale (model , glm::vec3 (2.0f) ) ; 
-    // model = glm::rotate (model, glm::radians (180.0f ) , glm::vec3 (0,1,0) ) ; 
-  
-    // glm:: vec4 worldspace_vertex  = (model * vertex ) ; 
-    // std::cout << glm::to_string (worldspace_vertex) <<std::endl ; 
-    
-    return 0 ;  }
+    return 0 ; 
+     }

@@ -15,8 +15,8 @@ class Square {
     glm::vec3 squareOrientation ; // contains the value of square rotation in radians  
     std::vector <glm::vec4> squareverticesarray  ;   
     Square (float squareWidth ) ; 
-    ~Square ()  ; 
-    double square_width ; 
+    ~Square () = default   ; 
+     
     void renderMyself ( SDL_Renderer * renderer ) ;  
 }; 
 

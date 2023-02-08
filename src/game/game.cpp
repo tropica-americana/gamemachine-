@@ -3,6 +3,7 @@
 
 void Game ::initialize()
 {
+
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0 )
     {
         std::cerr << "problem initializing everything " << std::endl;
@@ -16,6 +17,7 @@ void Game ::initialize()
     SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
     renderer = SDL_CreateRenderer(window, NULL, 0);
     if (renderer == 0 ){isRunning = false ; std::cout<<"probleme renderere "<<std::endl;return ; }
+
 }
 
 void Game ::processInput()
@@ -51,13 +53,13 @@ void Game ::processInput()
 }
 
 void Game :: update () {
-    SDL_RenderClear (renderer ) ; 
-
 } 
+// ---------------------------- render and destroying ----------------------------
 
-void Game :: render () {
-    SDL_SetRenderDrawColor(renderer ,255 ,21 ,21 , 255 ) ; 
-    
+void Game :: render () //where function is of the type function object 
+{
+    SDL_SetRenderDrawColor(renderer ,21 ,21 ,21 , 255 ) ; 
+    SDL_RenderClear (renderer ) ; 
     SDL_RenderPresent(renderer ) ; 
 } 
 
@@ -67,7 +69,7 @@ void Game :: destroy () {
 }
 
 //----------constructor of the game object --------------------------------------------
- Game :: Game ( ) {
+ Game :: Game () {
     isRunning = true ; 
     initialize() ; 
  } 
